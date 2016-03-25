@@ -27,6 +27,7 @@ Now you can switch to Julia:
 ``` julia
 include("icyJulia.jl")
 icy_imshow(data)
+icy_imshow(data, "ImageName")
 ```
 
 # Note
