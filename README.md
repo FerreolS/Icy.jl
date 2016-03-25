@@ -7,7 +7,7 @@ In Julia there are many frameworks to display images, so why not adding another 
 The idea is to be able to use all the tools from [Icy](http://icy.bioimageanalysis.org/) and its nice GUI.
 
 # HowTo
-* in Icy
+* In Icy
 
 open icyJulia plugin
 
