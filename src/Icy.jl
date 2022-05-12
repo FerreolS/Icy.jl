@@ -38,13 +38,14 @@ function icy_imshow(a, title="Julia")
     end
     
     println("Sending Size "*details)
-    client = connect("localhost", 10001)
+    client = connect(10001)
     write(client, details)
     close(client)
     println("Sending data")
-    client = connect("localhost", 10001)
+    client = connect(10001)
     write(client, b)
     close(client)
 end
+
 
 end # module
