@@ -1,0 +1,7 @@
+name = "Icy"
+uuid = "8e33b07e-c2aa-4384-b9c0-a32a7f37b5a7"
+authors = ["ferreol <ferreol.soulez@free.fr>"]
+version = "0.1.0"
+
+[deps]
+Sockets = "6462fe0b-24de-5631-8697-dd941f90decc"

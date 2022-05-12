@@ -1,3 +1,8 @@
+module Icy
+using Sockets
+
+export icy_imshow
+
 function createHeader(a, title)
     details = ""
     typeA = eltype(a)
@@ -41,3 +46,5 @@ function icy_imshow(a, title="Julia")
     write(client, b)
     close(client)
 end
+
+end # module
