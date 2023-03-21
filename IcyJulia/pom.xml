@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Inherited Icy Parent POM -->
+    <parent>
+        <artifactId>pom-icy</artifactId>
+        <groupId>org.bioimageanalysis.icy</groupId>
+        <version>2.1.0</version>
+    </parent>
+
+    <!-- Project Information -->
+    <artifactId>icy-julia</artifactId>
+    <version>1.0.3-SNAPSHOT</version>
+    
+    <packaging>jar</packaging>
+
+    <name>A template for Icy plugins.</name>
+    <description>This repo serves as a template for you to implement new Icy plugins.</description>
+    <url></url>
+    <inceptionYear>2020</inceptionYear>
+
+    <organization>
+        <name>Univ. Lyon 1, OSUL, CRAL</name>
+        <url>https://cral.univ-lyon1.fr/</url>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>GNU GPLv3</name>
+            <url>https://www.gnu.org/licenses/gpl-3.0.en.html</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>FerreolS</id>
+            <name>Ferreol Soulez</name>
+            <url>https://cral-perso.univ-lyon1.fr/labo/perso/ferreol.soulez/</url>
+            <roles>
+                <role>founder</role>
+                <role>lead</role>
+                <role>architect</role>
+                <role>developer</role>
+                <role>debugger</role>
+                <role>tester</role>
+                <role>maintainer</role>
+                <role>support</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <!-- Project properties -->
+    <properties>
+
+    </properties>
+
+    <!-- Project build configuration -->
+    <build>
+
+    </build>
+
+    <!-- List of project's dependencies -->
+    <dependencies>
+        <!-- The core of Icy -->
+        <dependency>
+            <groupId>org.bioimageanalysis.icy</groupId>
+            <artifactId>icy-kernel</artifactId>
+            <version>2.1.4</version>
+        </dependency>
+
+        <!-- The EzPlug library, simplifies writing UI for Icy plugins. -->
+        <dependency>
+            <groupId>org.bioimageanalysis.icy</groupId>
+            <artifactId>ezplug</artifactId>
+        </dependency>
+
+    </dependencies>
+
+    <!-- Icy Maven repository (to find parent POM) -->
+    <repositories>
+        <repository>
+            <id>icy</id>
+            <name>Icy's Nexus</name>
+            <url>https://icy-nexus.pasteur.fr/repository/Icy/</url>
+        </repository>
+    </repositories>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>server-id</id>
+            <url>server's url</url>
+        </snapshotRepository>
+        <repository>
+            <id>server-id</id>
+            <url>server's url</url>
+        </repository>
+    </distributionManagement>
+</project>

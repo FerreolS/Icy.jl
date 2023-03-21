@@ -26,3 +26,14 @@ Manifest.toml
 
 # VScode files
 .vscode
+
+# Java stuff
+.idea/
+.setting/
+.settings/
+target/
+workspace/
+build/
+*.iml
+.classpath
+.project
