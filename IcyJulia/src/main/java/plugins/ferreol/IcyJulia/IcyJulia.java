@@ -28,7 +28,7 @@ import plugins.adufour.ezplug.EzPlug;
 public class IcyJulia extends EzPlug  {
 
     EzLabel status;
-    boolean run = true;
+    boolean run = false;
     static final int PORT = 10001;
     static final int BYTE   = 0;
     static final int SHORT  = 1;
@@ -126,7 +126,10 @@ public class IcyJulia extends EzPlug  {
 
     @Override
     protected void execute() {
-
+        if (run){
+        System.out.println("Server already running");
+        return;
+        }
         ThreadUtil.bgRun(() -> {
             run = true;
             status.setText("Run");
@@ -139,7 +142,7 @@ public class IcyJulia extends EzPlug  {
                         Socket clientSocket = serverSocket.accept();
                         BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
                         // Receiving dimensions
-                        System.out.println("Client arrived");
+                        //System.out.println("Client arrived");
                         String detail = in.readLine();
 
                         in.close();
@@ -162,7 +165,7 @@ public class IcyJulia extends EzPlug  {
                             dims[i-1] = tmp;
                             rank++;
                         }
-                        System.out.println("TYPE: "+type+" COUNT "+count+" RANK "+rank);
+                        //System.out.println("TYPE: "+type+" COUNT "+count+" RANK "+rank);
                         int sizebyte =0;
                         // Creating data
                         switch (type) {
@@ -197,6 +200,7 @@ public class IcyJulia extends EzPlug  {
                         in.close();
                         clientSocket.close();
                         reset();
+                        arrayByte = null;
                     } catch (IOException e) {
                         System.err.println("Error while handling client request: " + e.getMessage());
                     }
