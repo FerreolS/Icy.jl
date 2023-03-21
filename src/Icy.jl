@@ -3,41 +3,27 @@ using Sockets
 
 export icy_imshow
 
-function createHeader(a, title)
-    details = ""
-    typeA = eltype(a)
-    if typeA == Int32
-        details = details*"0"
-    elseif typeA == Int64
-        details = details*"1"
-    elseif typeA == Float32
-        details = details*"2"
-    elseif typeA == Float64
-        details = details*"3"
-    else
-        println("Invalid data type")
-        return ""
-    end
+type2number(::Val{Int8})   =0
+type2number(::Val{Int16})  =1
+type2number(::Val{Int32})  =2
+type2number(::Val{Float32})=3
+type2number(::Val{Float64})=4
 
-    for i in size(a)
-       details *= "x"*string(i)
-    end
-    details *= "#"*title
-    return details
-end
-
-function icy_imshow(a, title="Julia")
-    details = createHeader(a, title)
-    if details == ""
-        println("Please convert the matrix in a supported type")
+function icy_imshow(a::AbstractArray{T,N}, title="Julia") where {T,N}
+    if N > 4
+        println("Unsupported number of dimension type")
         return
     end
-    b = similar(a)
-    for i in 1:length(a)
-       b[i] = hton(a[i])
+    if N < 2
+        println("Unsupported number of dimension type")
+        return
     end
-    
+    details = "$(type2number(Val((T))))x$(join(size(a),'x'))#$(title)"
+    b = hton.(a)
+
+
     println("Sending Size "*details)
+   @async begin 
     client = connect(10001)
     write(client, details)
     close(client)
@@ -45,6 +31,7 @@ function icy_imshow(a, title="Julia")
     client = connect(10001)
     write(client, b)
     close(client)
+    end
 end
 
 
